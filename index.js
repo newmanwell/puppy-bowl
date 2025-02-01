@@ -17,7 +17,6 @@ const getRoster = async() => {
   // store roster in state object
   state.pups = allPups.data.players;
   // invoke render function
-  console.log(state.pups);
   renderRoster();
   } catch (error) {
     alert(error);
@@ -26,6 +25,8 @@ const getRoster = async() => {
 
 // render roster function
 const renderRoster = () => {
+  // clear out main
+  main.innerHTML = ``;
   // create ul
   const ul = document.createElement(`ul`);
   // iterate through roster
@@ -48,14 +49,24 @@ const renderRoster = () => {
 }
 
 const renderPupDetail = () => {
+  // git pup details and add HTML
   const details = `
   <h2>${state.pupDetails.name}</h2>
   <h3>${state.pupDetails.breed}</h3>
   <h4>${state.pupDetails.status}</h4>
   <img src="${state.pupDetails.imageUrl}"></img>
   `;
-
+  // create button
+  const button = document.createElement(`button`);
+  // set inner text of button
+  button.innerText = `Back to Pups`
+  button.addEventListener(`click`, () => {
+    renderRoster();
+  })
+  // repace main with details
   main.innerHTML = details;
+  // add button to details
+  main.append(button);
 }
 
 getRoster();
