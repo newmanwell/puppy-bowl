@@ -27,6 +27,10 @@ const getRoster = async() => {
 const renderRoster = () => {
   // clear out main
   main.innerHTML = ``;
+  // create h2
+  const h2 = document.createElement(`h2`);
+  // add inner text to h2
+  h2.innerText = `The Pups`;
   // create ul
   const ul = document.createElement(`ul`);
   // iterate through roster
@@ -44,17 +48,19 @@ const renderRoster = () => {
       renderPupDetail();
     })
   });
-  // add the ul to main
+  // add the h2 and ul to main
+  main.append(h2);
   main.append(ul);
 }
 
 const renderPupDetail = () => {
   // git pup details and add HTML
   const details = `
-  <h2>${state.pupDetails.name}</h2>
-  <h3>${state.pupDetails.breed}</h3>
-  <h4>${state.pupDetails.status}</h4>
-  <img src="${state.pupDetails.imageUrl}"></img>
+  <h2>Pup Card</h2>
+  <h3>Name: ${state.pupDetails.name}</h3>
+  <h3>Breed: ${state.pupDetails.breed}</h3>
+  <h4>Status: ${state.pupDetails.status}</h4>
+  <img src="${state.pupDetails.imageUrl}" alt="puppy image"></img>
   `;
   // create button
   const button = document.createElement(`button`);
