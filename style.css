@@ -29,7 +29,7 @@ main {
   align-items: center;
   border: 3px solid black;
   border-radius: 8px;
-  width: 30%;
+  width: 350px;
   background-color: cornflowerblue;
   padding: 10px;
 }
