@@ -1,6 +1,7 @@
 // create state object 
 const state = {
-  pups: []
+  pups: [],
+  pupDetails: {}
 }
 
 // grab main 
@@ -16,6 +17,7 @@ const getRoster = async() => {
   // store roster in state object
   state.pups = allPups.data.players;
   // invoke render function
+  console.log(state.pups);
   renderRoster();
   } catch (error) {
     alert(error);
@@ -34,9 +36,26 @@ const renderRoster = () => {
     li.innerText = onePup.name;
     // add the li to the ul
     ul.append(li);
+    // click event listner for the LIs
+    li.addEventListener(`click`, () => {
+      // add puppy details to state object
+      state.pupDetails = onePup;
+      renderPupDetail();
+    })
   });
   // add the ul to main
   main.append(ul);
+}
+
+const renderPupDetail = () => {
+  const details = `
+  <h2>${state.pupDetails.name}</h2>
+  <h3>${state.pupDetails.breed}</h3>
+  <h4>${state.pupDetails.status}</h4>
+  <img src="${state.pupDetails.imageUrl}"></img>
+  `;
+
+  main.innerHTML = details;
 }
 
 getRoster();
