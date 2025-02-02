@@ -1,4 +1,4 @@
-# Puppy Blow Career Simulation
+# Puppy Bowl Career Simulation
 ## Goals
 * Manipulation of the DOM
 * API fetching
